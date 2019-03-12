@@ -63,6 +63,7 @@ class SoftDeleteableTrashFilter extends SQLFilter
         $platform = $conn->getDatabasePlatform();
         $column = $targetEntity->getQuotedColumnName($config['fieldName'], $platform);
 
+        // $addCondSql = '';
         $addCondSql = $platform->getIsNotNullExpression($targetTableAlias . '.' . $column);
         if (isset($config['timeAware']) && $config['timeAware']) {
             $now = $conn->quote(date('Y-m-d H:i:s')); // should use UTC in database and PHP

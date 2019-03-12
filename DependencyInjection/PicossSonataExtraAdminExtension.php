@@ -43,13 +43,14 @@ class PicossSonataExtraAdminExtension extends Extension
         if (isset($bundles['SonataDoctrineORMAdminBundle'])) {
             $loader->load('ORM/sortable.xml');
 
-            if ($container->hasDefinition('stof_doctrine_extensions.listener.loggable')) {
+            // if ($container->hasDefinition('stof_doctrine_extensions.listener.loggable')) {
                 $loader->load('ORM/audit.xml');
-            }
-
-            if ($container->hasDefinition('stof_doctrine_extensions.listener.softdeleteable')) {
+            // }
+                // $definition = $container->getDefinition('picoss.sonataextraadmin.trash.manager');
+                // $definition->addTag($doctrineSubscriberTag, []);
+            // if ($container->hasDefinition('stof_doctrine_extensions.listener.softdeleteable')) {
                 $loader->load('ORM/trash.xml');
-            }
+            // }
         }
 
         $container->registerForAutoconfiguration(ExtraAdminController::class)
