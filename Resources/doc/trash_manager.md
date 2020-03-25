@@ -1,4 +1,4 @@
-Audit Manager
+Trash Manager
 =============
 
 Trash manager for Gedmo soft deleteable entity.
@@ -7,9 +7,9 @@ Trash manager for Gedmo soft deleteable entity.
 
 Read [SoftDeleteable behavior](http://github.com/l3pp4rd/DoctrineExtensions/blob/master/doc/softdeleteable.md) to see how to setup a soft deleteable entity.
 
-## Enable audit
+## Enable trash
 
-Update your admin service to enable audit:
+Update your admin service to enable trash:
 
 **XML**
 ``` xml

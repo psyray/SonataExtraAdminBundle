@@ -2,6 +2,7 @@
 
 namespace Picoss\SonataExtraAdminBundle\Traits;
 
+use Doctrine\Common\Collections\Criteria;
 use Picoss\SonataExtraAdminBundle\Handler\SortableHandler;
 use Picoss\SonataExtraAdminBundle\Model\TrashManager;
 use Sonata\AdminBundle\Exception\ModelManagerException;
@@ -110,11 +111,12 @@ trait ExtraAdminController
      */
     public function trashAction()
     {
-        $this->admin->checkAccess('list');
-
+        // Disable soft deleteable filter & enable soft deleteable trash filter
         $em = $this->getDoctrine()->getManager();
         $em->getFilters()->disable('softdeleteable');
         $em->getFilters()->enable('softdeleteabletrash');
+
+        $this->admin->checkAccess('delete');
 
         $datagrid = $this->admin->getDatagrid();
         $formView = $datagrid->getForm()->createView();
@@ -139,12 +141,15 @@ trait ExtraAdminController
      */
     public function untrashAction(Request $request, $id, TrashManager $trashManager)
     {
+        // Disable soft deleteable filter & enable soft deleteable trash filter
         $em = $this->getDoctrine()->getManager();
         $em->getFilters()->disable('softdeleteable');
         $em->getFilters()->enable('softdeleteabletrash');
 
         $id = $request->get($this->admin->getIdParameter());
         $object = $this->admin->getObject($id);
+
+        $this->admin->checkAccess('delete', $object);
 
         if (!$object) {
             throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
@@ -166,7 +171,7 @@ trait ExtraAdminController
                     return $this->renderJson(['result' => 'ok']);
                 }
 
-                $this->addFlash('sonata_flash_success', $this->get('translator')->trans('flash_untrash_successfull', [], 'PicossSonataExtraAdminBundle'));
+                $this->addFlash('sonata_flash_success', $this->get('translator')->trans('flash_untrash_successful', [], 'PicossSonataExtraAdminBundle'));
             } catch (ModelManagerException $e) {
                 if ($this->isXmlHttpRequest()) {
                     return $this->renderJson(['result' => 'error']);
@@ -194,12 +199,15 @@ trait ExtraAdminController
      */
     public function hardDeleteAction(Request $request, $id)
     {
+        // Disable soft deleteable filter & enable soft deleteable trash filter
         $em = $this->getDoctrine()->getManager();
         $em->getFilters()->disable('softdeleteable');
         $em->getFilters()->enable('softdeleteabletrash');
 
         $id = $request->get($this->admin->getIdParameter());
         $object = $this->admin->getObject($id);
+
+        $this->admin->checkAccess('delete', $object);
 
         if (!$object) {
             throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
@@ -234,6 +242,66 @@ trait ExtraAdminController
             'object' => $object,
             'action' => 'hard_delete',
             'csrf_token' => $this->getCsrfToken('sonata.hard_delete'),
+        ]);
+    }
+
+    /**
+     * Delete all the element of the current class.
+     *
+     * @return RedirectResponse|Response
+     */
+    public function hardDeleteAllAction(Request $request)
+    {
+        // Disable soft deleteable filter & enable soft deleteable trash filter
+        $em = $this->getDoctrine()->getManager();
+        $em->getFilters()->disable('softdeleteable');
+        $em->getFilters()->enable('softdeleteabletrash');
+
+        $this->admin->checkAccess('delete');
+
+        // Get objects to delete
+        $objectRepository = $em->getRepository($this->admin->getClass());
+        $criteria = new Criteria();
+        $criteria->where(Criteria::expr()->neq('deletedAt', null));
+        $objectsToDelete = $objectRepository->matching($criteria);
+        $count = count($objectsToDelete);
+        if (0 == $count) {
+            $this->addFlash('sonata_flash_error', $this->get('translator')->trans('flash_hard_delete_all_no_item', [], 'PicossSonataExtraAdminBundle'));
+
+            return new RedirectResponse($this->admin->generateUrl('trash'));
+        }
+
+        if ('POST' == $request->getMethod()) {
+            // check the csrf token
+            $this->validateCsrfToken('sonata.hard_delete_all');
+
+            foreach ($objectsToDelete as $object) {
+                try {
+                    $object->setDeletedAt(new \DateTime());
+                    $em->remove($object);
+                    $em->flush($object);
+                } catch (ORMException $e) {
+                    if ($this->isXmlHttpRequest()) {
+                        return $this->renderJson(['result' => 'error']);
+                    }
+
+                    $this->addFlash('sonata_flash_error', $this->get('translator')->trans('flash_hard_delete_all_error', [], 'PicossSonataExtraAdminBundle'));
+                }
+            }
+
+            if ($this->isXmlHttpRequest()) {
+                return $this->renderJson(['result' => 'ok']);
+            }
+
+            $this->addFlash('sonata_flash_success', $this->get('translator')->trans('flash_hard_delete_all_successful', [], 'PicossSonataExtraAdminBundle'));
+
+            return new RedirectResponse($this->admin->generateUrl('list'));
+        }
+
+        return $this->renderWithExtraParams($this->admin->getTemplate('hard_delete_all'), [
+            'count' => $count,
+            'action' => 'hard_delete_all',
+            'csrf_token' => $this->getCsrfToken('sonata.hard_delete_all'),
         ]);
     }
 

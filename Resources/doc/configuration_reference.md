@@ -12,8 +12,10 @@ picoss_sonata_extra_admin:
     history_revision_timestamp: @PicossSonataExtraAdmin/CRUD/history_revision_timestamp.html.twig
     trash:                      @PicossSonataExtraAdmin/CRUD/trash.html.twig
     untrash:                    @PicossSonataExtraAdmin/CRUD/untrash.html.twig
+    hard_delete:                @PicossSonataExtraAdmin/CRUD/hard_delete.html.twig
     inner_trash_list_row:       @PicossSonataExtraAdmin/CRUD/list_trash_inner_row.html.twig
     button_trash:               @PicossSonataExtraAdmin/Button/trash_button.html.twig
+    button_hard_delete_all:     @PicossSonataExtraAdmin/Button/hard_delete_all_button.html.twig
     types:
       list:
         image:           @PicossSonataExtraAdmin/CRUD/list_image.html.twig

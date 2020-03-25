@@ -19,7 +19,6 @@ file that was distributed with this source code.
 
 {% block content %}
     <div class="sonata-ba-delete">
-
         <div class="box box-danger">
             <div class="box-header">
                 <h3 class="box-title">{{ 'title_hard_delete'|trans({}, 'PicossSonataExtraAdminBundle') }}</h3>
@@ -30,15 +29,13 @@ file that was distributed with this source code.
             <div class="box-footer clearfix">
                 <form method="POST" action="{{ admin.generateObjectUrl('hard_delete', object) }}">
                     <input type="hidden" name="_sonata_csrf_token" value="{{ csrf_token }}">
-
-                    <button type="submit" class="btn btn-danger"><i class="fa fa-reply fa-lg"></i> {{ 'btn_delete'|trans({}, 'PicossSonataExtraAdminBundle') }}</button>
                     {% if admin.hasRoute('hard_delete') and admin.hasAccess('delete', object) %}
-                        {{ 'delete_or'|trans({}, 'PicossSonataExtraAdminBundle') }}
-
-                        <a class="btn btn-success" href="{{ admin.generateUrl('trash') }}">
-                            <i class="glyphicon glyphicon-list"></i>
-                            {{ 'link_action_trash'|trans({}, 'PicossSonataExtraAdminBundle') }}</a>
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-times fa-lg"></i> {{ 'btn_hard_delete'|trans({}, 'PicossSonataExtraAdminBundle') }}</button>
+                            {{ 'delete_or'|trans({}, 'PicossSonataExtraAdminBundle') }}
                     {% endif %}
+                    <a class="btn btn-success" href="{{ admin.generateUrl('trash') }}">
+                        <i class="fa fa-trash-o fa-lg"></i>
+                        {{ 'link_action_trash'|trans({}, 'PicossSonataExtraAdminBundle') }}</a>
                 </form>
             </div>
         </div>

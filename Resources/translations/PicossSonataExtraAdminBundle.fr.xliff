@@ -51,15 +51,14 @@
                 <target>Retour à l'historique</target>
             </trans-unit>
 
-            <trans-unit id="flash_history_revert_successfull">
-                <source>flash_history_revert_successfull</source>
+            <trans-unit id="flash_history_revert_successful">
+                <source>flash_history_revert_successful</source>
                 <target>Les éléments ont été restaurés avec succès.</target>
             </trans-unit>
             <trans-unit id="flash_history_revert_error">
                 <source>flash_history_revert_error</source>
                 <target>Une erreur est intervenue lors de la restauration de l'élément.</target>
             </trans-unit>
-
             <trans-unit id="link_action_trash">
                 <source>link_action_trash</source>
                 <target>Corbeille</target>
@@ -74,47 +73,47 @@
             </trans-unit>
             <trans-unit id="message_restore_confirmation">
                 <source>message_restore_confirmation</source>
-                <target>Êtes-vous sûr de vouloir restaurer cet élément ?</target>
+                <target>Êtes-vous sûr de vouloir restaurer l'élément "%object%" ?</target>
             </trans-unit>
             <trans-unit id="btn_restore">
                 <source>btn_restore</source>
                 <target>Oui, restaurer</target>
             </trans-unit>
+            <trans-unit id="action_untrash">
+                <source>action_untrash</source>
+                <target>Restaurer</target>
+            </trans-unit>
             <trans-unit id="restore_or">
                 <source>restore_or</source>
                 <target>ou</target>
             </trans-unit>
-            <trans-unit id="flash_untrash_successfull">
-                <source>flash_untrash_successfull</source>
-                <target>Item has been restored successfully.</target>
+            <trans-unit id="flash_untrash_successful">
+                <source>flash_untrash_successful</source>
+                <target>L'élément a été correctement restauré.</target>
             </trans-unit>
             <trans-unit id="flash_untrash_error">
                 <source>flash_untrash_error</source>
-                <target>An Error has occurred during item restoration.</target>
-            </trans-unit>
-            <trans-unit id="Item has been restored successfully.">
-                <source>Item has been restored successfully.</source>
-                <target>L'élément a été restauré avec succès.</target>
+                <target>Une erreur est survenue durant la restauration de l'élément.</target>
             </trans-unit>
             <trans-unit id="flash_hard_delete_successful">
                 <source>flash_hard_delete_successful</source>
                 <target>L'élément a été supprimé définitvement</target>
             </trans-unit>
+            <trans-unit id="flash_hard_delete_error">
+                <source>flash_hard_delete_error</source>
+                <target>Une erreur est survenue durant la suppression de l'élément.</target>
+            </trans-unit>
             <trans-unit id="title_hard_delete">
                 <source>title_hard_delete</source>
                 <target>Confirmation de suppression définitive</target>
             </trans-unit>
-            <trans-unit id="btn_delete">
-                <source>btn_delete</source>
-                <target>Oui, supprimer</target>
+            <trans-unit id="btn_hard_delete">
+                <source>btn_hard_delete</source>
+                <target>Oui, supprimer définitivement l'élément</target>
             </trans-unit>
             <trans-unit id="delete_or">
                 <source>delete_or</source>
                 <target>ou</target>
-            </trans-unit>
-            <trans-unit id="action_untrash">
-                <source>action_untrash</source>
-                <target>Restaurer</target>
             </trans-unit>
             <trans-unit id="action_hard_delete">
                 <source>action_hard_delete</source>
@@ -123,6 +122,38 @@
             <trans-unit id="message_hard_delete_confirmation">
                 <source>message_hard_delete_confirmation</source>
                 <target>Êtes-vous sûr de vouloir supprimer définitivement "%object%" ?</target>
+            </trans-unit>
+            <trans-unit id="link_action_hard_delete_all">
+                <source>link_action_hard_delete_all</source>
+                <target>Supprimer définitivement tous les éléments</target>
+            </trans-unit>
+            <trans-unit id="flash_hard_delete_all_successful">
+                <source>flash_hard_delete_all_successful</source>
+                <target>Les éléments ont été supprimés définitivement</target>
+            </trans-unit>
+            <trans-unit id="flash_hard_delete_all_error">
+                <source>flash_hard_delete_all_error</source>
+                <target>Une erreur est survenue durant la suppression des éléments.</target>
+            </trans-unit>
+            <trans-unit id="flash_hard_delete_all_no_item">
+                <source>flash_hard_delete_all_no_item</source>
+                <target>Aucun élément à supprimer.</target>
+            </trans-unit>
+            <trans-unit id="title_hard_delete_all">
+                <source>title_hard_delete_all</source>
+                <target>Confirmation de suppression définitive de tous les éléments</target>
+            </trans-unit>
+            <trans-unit id="btn_hard_delete_all">
+                <source>btn_hard_delete_all</source>
+                <target>Oui, supprimer définitivement tous les éléments</target>
+            </trans-unit>
+            <trans-unit id="action_hard_delete_all">
+                <source>action_hard_delete_all</source>
+                <target>Suppression définitive de tous les éléments</target>
+            </trans-unit>
+            <trans-unit id="message_hard_delete_all_confirmation">
+                <source>message_hard_delete_all_confirmation</source>
+                <target>Êtes-vous sûr de vouloir supprimer définitivement %count% élément(s) ?</target>
             </trans-unit>
         </body>
     </file>
