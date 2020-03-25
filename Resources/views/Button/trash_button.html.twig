@@ -9,7 +9,7 @@ file that was distributed with this source code.
 
 #}
 
-{% if admin.isGranted('EDIT') and admin.hasRoute('trash') %}
+{% if admin.isGranted('DELETE') and admin.hasRoute('trash') %}
     <li>
         <a class="sonata-action-element" href="{{ admin.generateUrl('trash') }}">
             <i class="fa fa-trash-o" aria-hidden="true"></i>

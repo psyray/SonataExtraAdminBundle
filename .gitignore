@@ -2,3 +2,6 @@
 /vendor
 composer.phar
 composer.lock
+.project
+.buildpath
+.settings

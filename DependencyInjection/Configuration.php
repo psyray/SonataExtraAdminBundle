@@ -15,14 +15,14 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * Class Configuration
+ * Class Configuration.
  *
  * @author Romain Honel <romain.honel@gmail.com>
  */
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getConfigTreeBuilder()
     {
@@ -39,6 +39,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('history_revision_timestamp')->defaultValue('@PicossSonataExtraAdmin/CRUD/history_revision_timestamp.html.twig')->cannotBeEmpty()->end()
                         ->scalarNode('trash')->defaultValue('@PicossSonataExtraAdmin/CRUD/trash.html.twig')->cannotBeEmpty()->end()
                         ->scalarNode('untrash')->defaultValue('@PicossSonataExtraAdmin/CRUD/untrash.html.twig')->cannotBeEmpty()->end()
+                        ->scalarNode('hard_delete')->defaultValue('@PicossSonataExtraAdmin/CRUD/hard_delete.html.twig')->cannotBeEmpty()->end()
                         ->scalarNode('inner_trash_list_row')->defaultValue('@PicossSonataExtraAdmin/CRUD/list_trash_inner_row.html.twig')->cannotBeEmpty()->end()
                         ->scalarNode('button_trash')->defaultValue('@PicossSonataExtraAdmin/Button/trash_button.html.twig')->cannotBeEmpty()->end()
                         ->arrayNode('types')

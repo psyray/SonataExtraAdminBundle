@@ -12,14 +12,14 @@
 namespace Picoss\SonataExtraAdminBundle\Route;
 
 use Picoss\SonataExtraAdminBundle\Model\TrashManagerInterface;
-use Sonata\AdminBundle\Model\AuditManagerInterface;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Builder\RouteBuilderInterface;
+use Sonata\AdminBundle\Model\AuditManagerInterface;
 use Sonata\AdminBundle\Route\PathInfoBuilder;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
- * Class EntityRouterBuilder
+ * Class EntityRouterBuilder.
  *
  * @author Romain Honel <romain.honel@gmail.com>
  */
@@ -62,21 +62,18 @@ class EntityRouterBuilder extends PathInfoBuilder implements RouteBuilderInterfa
 //        $this->trashManager = $trashManager;
 //    }
 
-    /**
-     * @param AdminInterface $admin
-     * @param RouteCollection $collection
-     */
     public function build(AdminInterface $admin, RouteCollection $collection)
     {
         parent::build($admin, $collection);
 
         if ($this->manager && $this->manager->hasReader($admin->getClass())) {
-            $collection->add('history_revert', $admin->getRouterIdParameter() . '/history/{revision}/revert');
+            $collection->add('history_revert', $admin->getRouterIdParameter().'/history/{revision}/revert');
         }
 
         if ($this->trashManager && $this->trashManager->hasReader($admin->getClass())) {
             $collection->add('trash', 'trash');
-            $collection->add('untrash', $admin->getRouterIdParameter() . '/untrash');
+            $collection->add('untrash', $admin->getRouterIdParameter().'/untrash');
+            $collection->add('hard_delete', $admin->getRouterIdParameter().'/hard_delete');
         }
     }
 }

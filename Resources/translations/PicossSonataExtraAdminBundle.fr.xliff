@@ -74,15 +74,15 @@
             </trans-unit>
             <trans-unit id="message_restore_confirmation">
                 <source>message_restore_confirmation</source>
-                <target>Are you sure you want to restore the selected element?</target>
+                <target>Êtes-vous sûr de vouloir restaurer cet élément ?</target>
             </trans-unit>
             <trans-unit id="btn_restore">
                 <source>btn_restore</source>
-                <target>Yes, restore</target>
+                <target>Oui, restaurer</target>
             </trans-unit>
             <trans-unit id="restore_or">
                 <source>restore_or</source>
-                <target>or</target>
+                <target>ou</target>
             </trans-unit>
             <trans-unit id="flash_untrash_successfull">
                 <source>flash_untrash_successfull</source>
@@ -91,6 +91,38 @@
             <trans-unit id="flash_untrash_error">
                 <source>flash_untrash_error</source>
                 <target>An Error has occurred during item restoration.</target>
+            </trans-unit>
+            <trans-unit id="Item has been restored successfully.">
+                <source>Item has been restored successfully.</source>
+                <target>L'élément a été restauré avec succès.</target>
+            </trans-unit>
+            <trans-unit id="flash_hard_delete_successful">
+                <source>flash_hard_delete_successful</source>
+                <target>L'élément a été supprimé définitvement</target>
+            </trans-unit>
+            <trans-unit id="title_hard_delete">
+                <source>title_hard_delete</source>
+                <target>Confirmation de suppression définitive</target>
+            </trans-unit>
+            <trans-unit id="btn_delete">
+                <source>btn_delete</source>
+                <target>Oui, supprimer</target>
+            </trans-unit>
+            <trans-unit id="delete_or">
+                <source>delete_or</source>
+                <target>ou</target>
+            </trans-unit>
+            <trans-unit id="action_untrash">
+                <source>action_untrash</source>
+                <target>Restaurer</target>
+            </trans-unit>
+            <trans-unit id="action_hard_delete">
+                <source>action_hard_delete</source>
+                <target>Suppression définitive</target>
+            </trans-unit>
+            <trans-unit id="message_hard_delete_confirmation">
+                <source>message_hard_delete_confirmation</source>
+                <target>Êtes-vous sûr de vouloir supprimer définitivement "%object%" ?</target>
             </trans-unit>
         </body>
     </file>

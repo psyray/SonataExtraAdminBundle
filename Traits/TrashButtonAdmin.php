@@ -1,5 +1,6 @@
 <?php
-namespace Picoss\SonataExtraAdminBundle;
+
+namespace Picoss\SonataExtraAdminBundle\Traits;
 
 trait TrashButtonAdmin
 {
