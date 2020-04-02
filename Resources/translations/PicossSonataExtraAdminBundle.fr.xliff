@@ -155,6 +155,38 @@
                 <source>message_hard_delete_all_confirmation</source>
                 <target>Êtes-vous sûr de vouloir supprimer définitivement %count% élément(s) ?</target>
             </trans-unit>
+            <trans-unit id="link_action_untrash_all">
+                <source>link_action_untrash_all</source>
+                <target>Restaurer tous les éléments</target>
+            </trans-unit>
+            <trans-unit id="flash_untrash_all_successful">
+                <source>flash_untrash_all_successful</source>
+                <target>Les éléments ont été restaurés</target>
+            </trans-unit>
+            <trans-unit id="flash_untrash_all_error">
+                <source>flash_untrash_all_error</source>
+                <target>Une erreur est survenue durant la restauration des éléments.</target>
+            </trans-unit>
+            <trans-unit id="flash_untrash_all_no_item">
+                <source>flash_untrash_all_no_item</source>
+                <target>Aucun élément à restaurer.</target>
+            </trans-unit>
+            <trans-unit id="title_untrash_all">
+                <source>title_untrash_all</source>
+                <target>Confirmation de restauration de tous les éléments</target>
+            </trans-unit>
+            <trans-unit id="btn_untrash_all">
+                <source>btn_untrash_all</source>
+                <target>Oui, restaurer tous les éléments</target>
+            </trans-unit>
+            <trans-unit id="action_untrash_all">
+                <source>action_untrash_all</source>
+                <target>Restauration de tous les éléments</target>
+            </trans-unit>
+            <trans-unit id="message_untrash_all_confirmation">
+                <source>message_untrash_all_confirmation</source>
+                <target>Êtes-vous sûr de vouloir restaurer %count% élément(s) ?</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

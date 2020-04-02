@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-trait ExtraAdminController
+class ExtraAdminController
 {
     /**
      * Move element.
@@ -305,6 +305,83 @@ trait ExtraAdminController
         ]);
     }
 
+    /**
+     * Untrash all elements.
+     *
+     * @param int $id
+     *
+     * @return RedirectResponse|Response
+     */
+    public function untrashAllAction(Request $request, TrashManager $trashManager)
+    {
+        // Disable soft deleteable filter & enable soft deleteable trash filter
+        $em = $this->getDoctrine()->getManager();
+        $em->getFilters()->disable('softdeleteable');
+        $em->getFilters()->enable('softdeleteabletrash');
+        
+        $id = $request->get($this->admin->getIdParameter());
+        $object = $this->admin->getObject($id);
+        
+        $this->admin->checkAccess('delete');
+        
+        // Get objects to restore
+        $objectRepository = $em->getRepository($this->admin->getClass());
+        $criteria = new Criteria();
+        $criteria->where(Criteria::expr()->neq('deletedAt', null));
+        $objectsToRestore = $objectRepository->matching($criteria);
+        $count = count($objectsToRestore);
+        if (0 == $count) {
+            $this->addFlash('sonata_flash_error', $this->get('translator')->trans('flash_untrash_all_no_item', [], 'PicossSonataExtraAdminBundle'));
+            
+            return new RedirectResponse($this->admin->generateUrl('trash'));
+        }
+        
+        if ('POST' == $request->getMethod()) {
+            // check the csrf token
+            $this->validateCsrfToken('sonata.untrash_all');
+            
+            try {
+                if (!$trashManager->hasReader($this->admin->getClass())) {
+                    throw new NotFoundHttpException(sprintf('unable to find the trash reader for class : %s', $this->admin->getClass()));
+                }
+                
+                $reader = $trashManager->getReader($this->admin->getClass());
+                
+                foreach ($objectsToRestore as $object) {
+                    try {
+                        $reader->restore($object);
+                    } catch (\Exception $e) {
+                        if ($this->isXmlHttpRequest()) {
+                            return $this->renderJson(['result' => 'error']);
+                        }
+                        
+                        $this->addFlash('sonata_flash_error', $this->get('translator')->trans('flash_untrash_all_error', [], 'PicossSonataExtraAdminBundle'));
+                    }
+                }
+                
+                if ($this->isXmlHttpRequest()) {
+                    return $this->renderJson(['result' => 'ok']);
+                }
+                
+                $this->addFlash('sonata_flash_success', $this->get('translator')->trans('flash_untrash_all_successful', [], 'PicossSonataExtraAdminBundle'));
+            } catch (ModelManagerException $e) {
+                if ($this->isXmlHttpRequest()) {
+                    return $this->renderJson(['result' => 'error']);
+                }
+                
+                $this->addFlash('sonata_flash_error', $this->get('translator')->trans('flash_untrash_all_error', [], 'PicossSonataExtraAdminBundle'));
+            }
+            
+            return new RedirectResponse($this->admin->generateUrl('list'));
+        }
+        
+        return $this->renderWithExtraParams($this->admin->getTemplate('untrash_all'), [
+            'count' => $count,
+            'action' => 'untrash_all',
+            'csrf_token' => $this->getCsrfToken('sonata.untrash_all'),
+        ]);
+    }
+    
     /**
      * {@inheritdoc}
      */

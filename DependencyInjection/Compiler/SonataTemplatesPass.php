@@ -73,11 +73,13 @@ class SonataTemplatesPass implements CompilerPassInterface
                 $definition->addMethodCall('setTemplate', ['history_revision_timestamp', $extraTemplates['history_revision_timestamp']]);
                 $definition->addMethodCall('setTemplate', ['trash', $extraTemplates['trash']]);
                 $definition->addMethodCall('setTemplate', ['untrash', $extraTemplates['untrash']]);
+                $definition->addMethodCall('setTemplate', ['untrash_all', $extraTemplates['untrash_all']]);
                 $definition->addMethodCall('setTemplate', ['hard_delete', $extraTemplates['hard_delete']]);
                 $definition->addMethodCall('setTemplate', ['hard_delete_all', $extraTemplates['hard_delete_all']]);
                 $definition->addMethodCall('setTemplate', ['inner_trash_list_row', $extraTemplates['inner_trash_list_row']]);
                 $definition->addMethodCall('setTemplate', ['button_trash', $extraTemplates['button_trash']]);
                 $definition->addMethodCall('setTemplate', ['button_hard_delete_all', $extraTemplates['button_hard_delete_all']]);
+                $definition->addMethodCall('setTemplate', ['button_untrash_all', $extraTemplates['button_untrash_all']]);
             }
         }
     }

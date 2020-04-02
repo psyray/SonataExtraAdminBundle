@@ -150,6 +150,38 @@
                 <source>message_hard_delete_all_confirmation</source>
                 <target>Are you sure you want to permanently delete %count% item(s)?</target>
             </trans-unit>
+            <trans-unit id="link_action_untrash_all">
+                <source>link_action_untrash_all</source>
+                <target>Restore all items</target>
+            </trans-unit>
+            <trans-unit id="flash_untrash_all_successful">
+                <source>flash_untrash_all_successful</source>
+                <target>Item has been restored</target>
+            </trans-unit>
+            <trans-unit id="flash_untrash_all_error">
+                <source>flash_untrash_all_error</source>
+                <target>An Error has occurred during items restoration.</target>
+            </trans-unit>
+            <trans-unit id="flash_untrash_all_no_item">
+                <source>flash_untrash_all_no_item</source>
+                <target>No item to restore.</target>
+            </trans-unit>
+            <trans-unit id="title_untrash_all">
+                <source>title_untrash_all</source>
+                <target>Confirm restoration of all items</target>
+            </trans-unit>
+            <trans-unit id="btn_untrash_all">
+                <source>btn_untrash_all</source>
+                <target>Yes, restore all elements</target>
+            </trans-unit>
+            <trans-unit id="action_untrash_all">
+                <source>action_untrash_all</source>
+                <target>Restoration of all items</target>
+            </trans-unit>
+            <trans-unit id="message_untrash_all_confirmation">
+                <source>message_untrash_all_confirmation</source>
+                <target>Are you sure you want to restore %count% item(s)?</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

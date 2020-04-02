@@ -75,6 +75,7 @@ class EntityRouterBuilder extends PathInfoBuilder implements RouteBuilderInterfa
             $collection->add('untrash', $admin->getRouterIdParameter().'/untrash');
             $collection->add('hard_delete', $admin->getRouterIdParameter().'/hard_delete');
             $collection->add('hard_delete_all', 'hard_delete_all');
+            $collection->add('untrash_all', 'untrash_all');
         }
     }
 }

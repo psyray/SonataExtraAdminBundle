@@ -1,0 +1,19 @@
+{#
+
+This file is part of the YesWeHack BugBounty backend
+
+(c) Romain Honel <romain.honel@gmail.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+
+#}
+
+{% if admin.isGranted('DELETE') and admin.hasRoute('untrash_all') %}
+    <li>
+        <a class="sonata-action-element" href="{{ admin.generateUrl('untrash_all') }}">
+            <i class="fa fa-reply" aria-hidden="true"></i>
+            {{ 'link_action_untrash_all'|trans({}, 'PicossSonataExtraAdminBundle') }}
+        </a>
+    </li>
+{% endif %}

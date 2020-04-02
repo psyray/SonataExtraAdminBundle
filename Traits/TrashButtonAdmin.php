@@ -22,6 +22,14 @@ trait TrashButtonAdmin
         if (in_array($action, [
             'trash',
         ]) && $this->hasRoute('hard_delete_all')) {
+            $list['untrash_all'] = [
+                'template' => $this->getTemplate('button_untrash_all'),
+            ];
+        }
+        
+        if (in_array($action, [
+            'trash',
+        ]) && $this->hasRoute('hard_delete_all')) {
             $list['hard_delete_all'] = [
                 'template' => $this->getTemplate('button_hard_delete_all'),
             ];
