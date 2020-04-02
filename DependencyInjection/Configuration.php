@@ -26,8 +26,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('picoss_sonata_extra_admin');
+        $treeBuilder = new TreeBuilder('picoss_sonata_extra_admin');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
